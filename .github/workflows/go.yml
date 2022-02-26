@@ -1,25 +1,25 @@
-name: Go
+name: Go # ワークフローの名前 nameを省略すると、GitHubはリポジトリのルートに対するワークフローファイルの相対パスをその値に設定します。
 
-on:
-  push:
+on: # onでトリガーを指定する
+  push: #pushしたタイミングでイベントを発火する
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-jobs:
+jobs: 
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+  build: #buildという名のIDを指定している。あくまでも名前なので、何でも良い
+    runs-on: ubuntu-latest #GitHubホストランナーを使う場合、それぞれのジョブはruns-onで指定された仮想環境の新しいインスタンスで実行されます。
+    steps: # ステップ
+    - uses: actions/checkout@v2  #selects an action to run as part of a step in your job. actions/checkout@v2というアクションを読んでいる。アクションはライブラリ。ここでgit cloneしている??
 
     - name: Set up Go
       uses: actions/setup-go@v2
-      with:
+      with: # パラメータを指定している
         go-version: 1.17
 
     - name: Build
-      run: go build -v ./...
+      run: go build -v ./... #コマンドを実行している
 
     - name: Test
-      run: go test -v ./...
+      run: go test -v ./... # 
