@@ -35,12 +35,12 @@ func FizBuz(in string) (string, error) {
 	case i%15 == 0:
 		// 15の倍数ならFizzBuzz
 		return "FizzBuzz", nil
-	}
 	case i%3 == 0:
 		// 3の倍数ならFizz
 		return "Fizz", nil
 	case i%5 == 0:
 		// 5の倍数ならBuzz
 		return "Buzz", nil
+	}
 	return "", fmt.Errorf("判定できませんでした: %s", in)
 }
