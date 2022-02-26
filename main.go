@@ -41,6 +41,8 @@ func FizBuz(in string) (string, error) {
 	case i%5 == 0:
 		// 5の倍数ならBuzz
 		return "Buzz", nil
+	default:
+		return fmt.Sprintf("%d", i), nil
 	}
 	return "", fmt.Errorf("判定できませんでした: %s", in)
 }
